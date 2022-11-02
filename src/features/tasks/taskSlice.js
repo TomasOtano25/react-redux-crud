@@ -24,11 +24,18 @@ export const taskSlice = createSlice({
       state.push(action.payload);
     },
     updateTask: (state, action) => {},
-    removeTask: (state, action) => {},
+    deleteTask: (state, action) => {
+      const taskFound = state.find((task) => task.id === action.payload);
+      if (taskFound) {
+        state.splice(state.indexOf(taskFound), 1);
+      }
+    },
   },
 });
 
-export const { addTask, updateTask } = taskSlice.actions;
+// NOTA: todas las funcion no son validas se debe usar inmutabilidad
+
+export const { addTask, deleteTask } = taskSlice.actions;
 
 export const taskSelector = (state) => state.tasks;
 
