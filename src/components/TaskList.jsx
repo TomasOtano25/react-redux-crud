@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteTask } from "../features/tasks/taskSlice";
+import Header from "./Header";
 
 function TaskList() {
   const tasks = useSelector((state) => state.tasks);
@@ -12,6 +14,9 @@ function TaskList() {
 
   return (
     <div className="flex flex-col items-center">
+      {/* Header */}
+      <Header />
+
       {/* List Tasks */}
       <div>
         {tasks.map((task) => (
@@ -21,12 +26,21 @@ function TaskList() {
               <p>{task.description}</p>
             </div>
 
-            <button
-              onClick={() => handleDelete(task.id)}
-              className="bg-red-500 p-1 rounded-md text-white"
-            >
-              Delete
-            </button>
+            <div className="space-x-2">
+              <Link
+                to={`/edit-task/${task.id}`}
+                className="bg-yellow-500 p-1 rounded-md text-white hover:bg-yellow-600"
+              >
+                Edit
+              </Link>
+
+              <button
+                onClick={() => handleDelete(task.id)}
+                className="bg-red-500 p-1 rounded-md text-white hover:bg-red-600"
+              >
+                Delete
+              </button>
+            </div>
           </div>
         ))}
       </div>
