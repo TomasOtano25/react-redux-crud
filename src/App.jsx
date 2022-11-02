@@ -8,7 +8,7 @@ function App() {
   console.log(tasksState);
 
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen">
       <h1>Tasks</h1>
       <TaskForm />
       <TaskList />
