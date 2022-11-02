@@ -42,26 +42,42 @@ function TaskForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col max-w-lg mx-auto space-y-2"
+      className="bg-zinc-800 flex flex-col max-w-md w-full p-4 rounded-md"
     >
+      <h2 className="text-2xl font-bold mb-4">
+        {!params.id ? "Create" : "Edit"} Task
+      </h2>
+
+      <label
+        htmlFor="title"
+        className="block text-xs text-gray-200 font-bold mb-1"
+      >
+        Task:{" "}
+      </label>
       <input
-        className="outline-none p-2 rounded-md"
+        className="w-full p-2 rounded-md bg-zinc-600 mb-4 outline-none"
         type="text"
         name="title"
-        placeholder="Title"
+        placeholder="New Task ..."
         onChange={handleChange}
         value={task.title}
       />
 
+      <label
+        htmlFor="description"
+        className="block text-xs text-gray-200 font-bold mb-1"
+      >
+        Description:{" "}
+      </label>
       <textarea
-        className="outline-none p-2 rounded-md"
+        className="w-full p-2 rounded-md bg-zinc-600 mb-4 outline-none"
         name="description"
-        placeholder="Description"
+        placeholder="Description ..."
         onChange={handleChange}
         value={task.description}
       ></textarea>
 
-      <button className="bg-blue-400 p-2 rounded-md hover:bg-blue-500 cursor-pointer font-bold text-white">
+      <button className="bg-indigo-600 px-2 py-1 rounded-md hover:bg-indigo-700">
         Save
       </button>
     </form>

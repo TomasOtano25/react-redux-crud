@@ -13,34 +13,35 @@ function TaskList() {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="w-4/6">
       {/* Header */}
       <Header />
 
       {/* List Tasks */}
-      <div>
+      <div className="grid grid-cols-3 gap-4 p-4">
         {tasks.map((task) => (
-          <div key={task.id} className="flex space-x-10 items-center">
-            <div>
+          <div key={task.id} className="bg-neutral-800 p-4 rounded-md">
+            <header className="flex items-center justify-between">
               <h3 className="text-xl font-bold">{task.title}</h3>
-              <p>{task.description}</p>
-            </div>
 
-            <div className="space-x-2">
-              <Link
-                to={`/edit-task/${task.id}`}
-                className="bg-yellow-500 p-1 rounded-md text-white hover:bg-yellow-600"
-              >
-                Edit
-              </Link>
+              <div className="flex gap-x-2">
+                <Link
+                  to={`/edit-task/${task.id}`}
+                  className="bg-zinc-600 px-2 py-1 text-xs rounded-md hover:bg-zinc-700"
+                >
+                  Edit
+                </Link>
 
-              <button
-                onClick={() => handleDelete(task.id)}
-                className="bg-red-500 p-1 rounded-md text-white hover:bg-red-600"
-              >
-                Delete
-              </button>
-            </div>
+                <button
+                  onClick={() => handleDelete(task.id)}
+                  className="bg-red-500 px-2 py-1 text-xs rounded-md hover:bg-red-600"
+                >
+                  Delete
+                </button>
+              </div>
+            </header>
+
+            <p>{task.description}</p>
           </div>
         ))}
       </div>
